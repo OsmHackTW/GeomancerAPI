@@ -9,3 +9,10 @@
 編輯凶宅 | /unluckyhouse/edit/{id}
 凶宅資料上架 | /unluckyhouse/enable/{id}
 凶宅資料下架 | /unluckyhouse/disable/{id}
+列出已上架凶宅 |
+列出已下架凶宅 |
+同步台灣凶宅網文章 |
+取得進度 - 同步台灣凶宅網文章 |
+驗證凶宅新聞連結 |
+取得進度 - 驗證凶宅新聞連結 |
+分析凶宅新聞 | 
