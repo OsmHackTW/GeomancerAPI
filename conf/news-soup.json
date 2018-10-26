@@ -12,7 +12,7 @@
   },
   "appledaily": {
     "desktop": {
-      "host": "www.appledaily.com.tw",
+      "host": "tw.news.appledaily.com",
       "title_node": "head > meta[property=og:title]",
       "title_attr": "content",
       "date_node": "article.ndArticle_leftColumn > hgroup > div.ndArticle_creat",

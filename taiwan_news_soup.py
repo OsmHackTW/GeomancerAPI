@@ -5,10 +5,15 @@ import logging
 import logging.config
 from datetime import datetime
 
+import requests
 from bs4 import BeautifulSoup
 
 def soup_from_url(url):
-    return None
+    soup = None
+    resp = requests.get(url)
+    if resp.status_code == 200:
+        soup = BeautifulSoup(resp.text, 'lxml')
+    return soup
 
 def soup_from_file(file_path):
     soup = None
@@ -61,6 +66,12 @@ class NewsSoup:
 
         if path.startswith('http'):
             logger.debug('Loading news from website.')
+            self.soup = soup_from_url(path)
+            all_conf = load_soup_conf()
+            for (channel, conf) in all_conf.items():
+                if channel in path:
+                    self.channel = channel
+                    self.conf = conf
         else:
             logger.debug('Loading news from cache.')
             self.soup = soup_from_file(path)
@@ -142,14 +153,18 @@ class NewsSoup:
 
 def main():
     samples = [
+        # 測試快取
         'samples/appledaily.html',
         'samples/cna.html',
         'samples/ettoday.html',
-        # 'samples/judicial.html',
+        #'samples/judicial.html',
         'samples/ltn.html',
-        # 'samples/on.html'
+        #'samples/on.html'
         'samples/setn.html',
-        'samples/udn.html'
+        'samples/udn.html',
+        # 測試實際頁面
+        'https://tw.news.appledaily.com/local/realtime/20181025/1453825/',
+        'https://www.cna.com.tw/news/asoc/201810170077.aspx'
     ]
 
     print('-' * 80)
