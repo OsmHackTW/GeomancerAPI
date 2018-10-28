@@ -53,9 +53,9 @@ def load_soup_conf():
 class NewsSoup:
 
     def __init__(self, path):
-        soup = None
-        conf = None
-        channel = 'unknown'
+        self.soup = None
+        self.conf = None
+        self.channel = 'unknown'
         self.cache = {
             'title': None,
             'date': None,
@@ -64,22 +64,34 @@ class NewsSoup:
             'tags': None
         }
 
-        if path.startswith('http'):
-            logger.debug('Loading news from website.')
-            self.soup = soup_from_url(path)
+        if path.startswith('https'):
+            logger.debug('從網站載入新聞.')
+            try:
+                self.soup = soup_from_url(path)
+            except:
+                logger.error('無法載入新聞')
             all_conf = load_soup_conf()
             for (channel, conf) in all_conf.items():
                 if channel in path:
                     self.channel = channel
                     self.conf = conf
         else:
-            logger.debug('Loading news from cache.')
-            self.soup = soup_from_file(path)
+            logger.debug('從檔案載入新聞.')
+            try:
+                self.soup = soup_from_file(path)
+            except:
+                logger.error('無法載入新聞')
             all_conf = load_soup_conf()
             for (channel, conf) in all_conf.items():
                 if channel in path:
                     self.channel = channel
                     self.conf = conf
+
+        if self.channel is None:
+            if self.soup is None:
+                logger.error('無法轉換 BeautifulSoup，可能是網址或檔案路徑錯誤')
+            else:
+                logger.error('不支援的新聞台，請檢查設定檔')
 
     def title(self):
         if self.cache['title'] is None:
@@ -155,16 +167,16 @@ def main():
     samples = [
         # 測試快取
         'samples/appledaily.html',
-        'samples/cna.html',
-        'samples/ettoday.html',
+        #'samples/cna.html',
+        #'samples/ettoday.html',
         #'samples/judicial.html',
-        'samples/ltn.html',
+        #'samples/ltn.html',
         #'samples/on.html'
-        'samples/setn.html',
-        'samples/udn.html',
+        #'samples/setn.html',
+        #'samples/udn.html',
         # 測試實際頁面
-        'https://tw.news.appledaily.com/local/realtime/20181025/1453825/',
-        'https://www.cna.com.tw/news/asoc/201810170077.aspx'
+        'http://tw.news.appledaily.com/local/realtime/20181025/1453825/',
+        #'https://www.cna.com.tw/news/asoc/201810170077.aspx'
     ]
 
     print('-' * 80)

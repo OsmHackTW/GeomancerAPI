@@ -11,19 +11,25 @@
     }
   },
   "appledaily": {
+    "rwd": true,
     "desktop": {
-      "host": "tw.news.appledaily.com",
+      "host": "https://tw.news.appledaily.com/",
       "title_node": "head > meta[property=og:title]",
       "title_attr": "content",
       "date_node": "article.ndArticle_leftColumn > hgroup > div.ndArticle_creat",
       "date_format": "出版時間：%Y/%m/%d %H:%M",
       "author_node": "",
       "article_node": "div.ndArticle_margin > p"
+    },
+    "comments": {
+      "c1": "https://tw.appledaily.com/",
+      "c2": "https://tw.news.appledaily.com/"
     }
   },
   "cna": {
+    "rwd": true,
     "desktop": {
-      "host": "www.cna.com.tw",
+      "host": "https://www.cna.com.tw/",
       "title_node": "div.centralContent > h1",
       "title_attr": "",
       "date_node": "div.centralContent > div.timeBox > div.updatetime > span",
@@ -33,8 +39,9 @@
     }
   },
   "ettoday": {
+    "rwd": true,
     "desktop": {
-      "host": "www.ettoday.net",
+      "host": "https://www.ettoday.net/",
       "title_node": "article > div.subject_article > header > h1.title",
       "title_attr": "",
       "date_node": "time.date",
@@ -55,14 +62,24 @@
     }
   },
   "ltn": {
+    "rwd": false,
     "desktop": {
-      "host": "news.ltn.com.tw",
+      "host": "https://news.ltn.com.tw/",
       "title_node": "div.articlebody > h1",
       "title_attr": "",
       "date_node": "div.articlebody > div.text > span.viewtime",
       "date_format": "%Y-%m-%d %H:%M",
       "author_node": "",
       "article_node": "div.articlebody > div.text > p"
+    },
+    "mobile": {
+      "host": "https://m.ltn.com.tw/",
+      "title_node": "",
+      "title_attr": "",
+      "date_node": "",
+      "date_format": "",
+      "author_node": "",
+      "article_node": ""
     }
   },
   "on": {
@@ -77,19 +94,30 @@
     }
   },
   "setn": {
+    "rwd": false,
     "desktop": {
-      "host": "www.setn.com",
+      "host": "https://www.setn.com/",
       "title_node": "#contFix > div.row > div.contLeft > h1",
       "title_attr": "",
       "date_node": "#contFix > div.row > div.contLeft > div.content > div.page-title-text > time.page-date",
       "date_format": "%Y/%m/%d %H:%M:%S",
       "author_node": "#contFix > div.row > div.contLeft > div.content > div.page-title-text > span.reporter",
       "article_node": "#Content1 > p"
+    },
+    "desktop": {
+      "host": "https://www.setn.com/m/",
+      "title_node": "",
+      "title_attr": "",
+      "date_node": "",
+      "date_format": "",
+      "author_node": "",
+      "article_node": ""
     }
   },
   "udn": {
+    "rwd": true,
     "desktop": {
-      "host": "udn.com",
+      "host": "https://udn.com/",
       "title_node": "#story_body_content > h1",
       "title_attr": "",
       "date_node": "#story_bady_info > div.story_bady_info_author > span",
